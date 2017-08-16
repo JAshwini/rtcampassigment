@@ -701,6 +701,7 @@ public function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 	if($nb>0 && $s[$nb-1]=="\n")
 		$nb--;
 	$b = 0;
+	$b2='';
 	if($border)
 	{
 		if($border==1)
@@ -746,6 +747,7 @@ public function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 				$b = $b2;
 			continue;
 		}
+		$ls='';
 		if($c==' ')
 		{
 			$sep = $i;
@@ -1167,13 +1169,15 @@ protected function _endpage()
 
 protected function _loadfont($font)
 {
+	var $name = '';
+	var $enc = '';
 	// Load a font definition file from the font directory
 	if(strpos($font,'/')!==false || strpos($font,"\\")!==false)
 		$this->Error('Incorrect font definition file name: '.$font);
 	include($this->fontpath.$font);
-	if(!isset($name))
+	if($name != '')
 		$this->Error('Could not include font definition file');
-	if(isset($enc))
+	if($enc != '')
 		$enc = strtolower($enc);
 	if(!isset($subsetted))
 		$subsetted = false;

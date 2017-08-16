@@ -46,11 +46,9 @@ function tweets_and_follower()
 
 	$tweets = $connection->get('statuses/user_timeline',["count" =>10]);
 	$_SESSION['tweets']=$tweets;
-	// $ajaxfollowers = $connection->get('followers/list',["screen_name" =>$user->screen_name]);
 
 	$followers = $connection->get('followers/list',["screen_name" =>$user->screen_name, "count"=>10]);
 	$_SESSION['followers']=$followers;
-	// print_r($followers);die();
 }
 ?>	
 	<!DOCTYPE html>
