@@ -1,12 +1,30 @@
 <?php 
 session_start();
-require('./assets/lib/fpdf.php');
+require 'vendor/autoload.php';
+// include autoloader
+require_once 'dompdf/autoload.inc.php';
 
-$pdf = new FPDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(40,10,'Hello World!');
-$pdf->Output('tweets.pdf','F');
+use Dompdf\Dompdf;
 
-$_SESSION['pdf']='done';
-header("location: home.php");
+$html="<table border=1>
+<tr>
+<td>hello</td><td>world</td>
+</tr>
+</table>";
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+file_put_contents("tweets.pdf", $dompdf->output("tweets.pdf"));
+
+$_SESSION['pdf']="done";
+
+header("Location: home.php");
+
