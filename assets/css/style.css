@@ -1,0 +1,30 @@
+.slider{
+	text-align: center;
+    padding-left: 10%;
+    padding-right: 18%;
+    font-size: 22px;
+    margin-top: 5%;
+}
+
+.slider .bx-viewport{
+	height: auto !important;
+}
+
+.follower_list{
+	margin-top: 5%;
+}
+
+.follower_screen_name{
+	color: #b5b3b3;
+    font-size: 12px;
+}
+
+.follower_name {
+	color: skyblue;
+	margin-bottom: -2%;
+	cursor: pointer;
+}
+
+.download_opt{
+	text-align: center;
+}
