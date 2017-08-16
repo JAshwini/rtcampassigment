@@ -1169,8 +1169,8 @@ protected function _endpage()
 
 protected function _loadfont($font)
 {
-	var $name = '';
-	var $enc = '';
+	$name = '';
+	$enc = '';
 	// Load a font definition file from the font directory
 	if(strpos($font,'/')!==false || strpos($font,"\\")!==false)
 		$this->Error('Incorrect font definition file name: '.$font);
