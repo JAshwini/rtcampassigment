@@ -9,7 +9,7 @@ use TwitterOAuth\TwitterOAuth;
 
 define('CONSUMER_KEY', 'CpNsoudElmFHaMCgaoXoqrp1h'); 
 define('CONSUMER_SECRET', 'lIY1JtAR4BH3MgHxSiF5yAEvPNeMANpGlb8rzsAfh7Fyh599bS'); 
-define('OAUTH_CALLBACK', 'http://127.0.0.1/rtwitter-master/ui/callback.php'); 
+define('OAUTH_CALLBACK', 'https://floating-wave-21421.herokuapp.com/callback.php'); 
 
 if (!isset($_SESSION['access_token'])) {
 	connect();
@@ -109,18 +109,20 @@ function tweets_and_follower()
 				<?php 
 				$filepath = "./assets/pdfs/";
 				$filename = "tweets_".$_SESSION['user_screen_name'].".pdf";
-				$filepath_csv = "http://127.0.0.1/rtwitter-master/ui/assets/csvs/";
+				$filepath_csv = "https://floating-wave-21421.herokuapp.com/assets/csvs/";
 				$filename_csv = "tweets_".$_SESSION['user_screen_name'].".csv";
 				?>
 				<div class="download_opt" visibility="hidden">
 					<div class="g-savetodrive save_to_drive" data-src="<?php echo $filepath."".$filename; ?>" data-filename="<?php echo $filename; ?>" data-sitename="TweeetsWorld"></div>
 					<div>
-						<table>
-							<tr>
-								<td><a href="<?php echo $filepath."".$filename; ?>" download>Download PDF</a></td>
-								<td><label id="csv_download" data="<?php echo $filepath_csv."".$filename_csv; ?>">Download CSV</label></td>
-							</tr>
-						</table>
+						<center>
+							<table>
+								<tr>
+									<td><a href="<?php echo $filepath."".$filename; ?>" download>Download PDF</a></td>
+									<td><label id="csv_download" data="<?php echo $filepath_csv."".$filename_csv; ?>">Download CSV</label></td>
+								</tr>
+							</table>
+						</center>
 					</div>
 				</div>
 			</div>
@@ -185,7 +187,7 @@ function tweets_and_follower()
 
 
 		$(".follower_name").click(function () {
-			var url="http://127.0.0.1/rtwitter-master/ui/tweets.php?screen_name="+$(this).attr("data");
+			var url="tweets.php?screen_name="+$(this).attr("data");
 			$.ajax({
 				type: "GET",
 				url: url,
@@ -203,7 +205,7 @@ function tweets_and_follower()
 		});
 		var followers;
 		$.ajax({
-	      url: 'http://127.0.0.1/rtwitter-master/ui/followers.php',
+	      url: 'followers.php',
 	      dataType: 'json',     
 	      success: function(json) {
 	      	followers=jQuery.parseJSON(JSON.stringify(json));
