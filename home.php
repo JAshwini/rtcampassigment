@@ -9,7 +9,7 @@ use TwitterOAuth\TwitterOAuth;
 
 define('CONSUMER_KEY', 'CpNsoudElmFHaMCgaoXoqrp1h'); 
 define('CONSUMER_SECRET', 'lIY1JtAR4BH3MgHxSiF5yAEvPNeMANpGlb8rzsAfh7Fyh599bS'); 
-define('OAUTH_CALLBACK', 'https://floating-wave-21421.herokuapp.com/callback.php'); 
+define('OAUTH_CALLBACK', 'https://rtcampassignment.herokuapp.com/callback.php'); 
 
 if (!isset($_SESSION['access_token'])) {
 	connect();
@@ -109,7 +109,7 @@ function tweets_and_follower()
 				<?php 
 				$filepath = "./assets/pdfs/";
 				$filename = "tweets_".$_SESSION['user_screen_name'].".pdf";
-				$filepath_csv = "https://floating-wave-21421.herokuapp.com/assets/csvs/";
+				$filepath_csv = "https://rtcampassignment.herokuapp.com/assets/csvs/";
 				$filename_csv = "tweets_".$_SESSION['user_screen_name'].".csv";
 				?>
 				<div class="download_opt" visibility="hidden">

@@ -7,7 +7,7 @@
 
 	define('CONSUMER_KEY', 'CpNsoudElmFHaMCgaoXoqrp1h'); 
 	define('CONSUMER_SECRET', 'lIY1JtAR4BH3MgHxSiF5yAEvPNeMANpGlb8rzsAfh7Fyh599bS'); 
-	define('OAUTH_CALLBACK', 'https://floating-wave-21421.herokuapp.com/callback.php'); 
+	define('OAUTH_CALLBACK', 'https://rtcampassignment.herokuapp.com/callback.php'); 
 
 	$user = $_SESSION['user'];	
 

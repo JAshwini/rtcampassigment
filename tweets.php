@@ -6,7 +6,7 @@ use TwitterOAuth\TwitterOAuth;
 
 define('CONSUMER_KEY', 'CpNsoudElmFHaMCgaoXoqrp1h'); 
 define('CONSUMER_SECRET', 'lIY1JtAR4BH3MgHxSiF5yAEvPNeMANpGlb8rzsAfh7Fyh599bS'); 
-define('OAUTH_CALLBACK', 'https://floating-wave-21421.herokuapp.com/callback.php'); 
+define('OAUTH_CALLBACK', 'https://rtcampassignment.herokuapp.com/callback.php'); 
 
 $access_token = $_SESSION['access_token'];
 $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);

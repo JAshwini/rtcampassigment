@@ -4,7 +4,7 @@ require 'autoload.php';
 use TwitterOAuth\TwitterOAuth;
 define('CONSUMER_KEY', 'CpNsoudElmFHaMCgaoXoqrp1h'); 
 define('CONSUMER_SECRET', 'lIY1JtAR4BH3MgHxSiF5yAEvPNeMANpGlb8rzsAfh7Fyh599bS'); 
-define('OAUTH_CALLBACK', 'https://floating-wave-21421.herokuapp.com/callback.php'); 
+define('OAUTH_CALLBACK', 'https://rtcampassignment.herokuapp.com/callback.php'); 
 
 if (isset($_REQUEST['oauth_verifier'], $_REQUEST['oauth_token']) && $_REQUEST['oauth_token'] == $_SESSION['oauth_token']) {
 	$request_token = [];
