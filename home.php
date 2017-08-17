@@ -106,8 +106,22 @@ function tweets_and_follower()
 					}
 					?>
 				</div>
+				<?php 
+				$filepath = "./assets/pdfs/";
+				$filename = "tweets_".$_SESSION['user_screen_name'].".pdf";
+				$filepath_csv = "http://127.0.0.1/rtwitter-master/ui/assets/csvs/";
+				$filename_csv = "tweets_".$_SESSION['user_screen_name'].".csv";
+				?>
 				<div class="download_opt" visibility="hidden">
-					<div class="g-savetodrive save_to_drive" data-src="tweets.pdf" data-filename="tweets.pdf" data-sitename="TweeetsWorld"></div>
+					<div class="g-savetodrive save_to_drive" data-src="<?php echo $filepath."".$filename; ?>" data-filename="<?php echo $filename; ?>" data-sitename="TweeetsWorld"></div>
+					<div>
+						<table>
+							<tr>
+								<td><a href="<?php echo $filepath."".$filename; ?>" download>Download PDF</a></td>
+								<td><label id="csv_download" data="<?php echo $filepath_csv."".$filename_csv; ?>">Download CSV</label></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-12">
@@ -149,6 +163,15 @@ function tweets_and_follower()
 				url: "logout.php"
 			});
 		});
+		$("#csv_download").click(function () {
+			$.ajax({
+				url: "generatecsv.php",
+				success: function () {
+					window.location.href = $(this).attr("data");
+				}
+			});
+			// window.location.href = "generatecsv.php";
+		});
 
 		var slider = $('.bxslider').bxSlider({
 			mode: 'horizontal'
@@ -184,7 +207,7 @@ function tweets_and_follower()
 	      dataType: 'json',     
 	      success: function(json) {
 	      	followers=jQuery.parseJSON(JSON.stringify(json));
-		    console.log(followers);
+		    // console.log(followers);
 	      },
 	      error: function (e) {
 	      	console.log(e);
