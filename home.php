@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION)){
+if(!isset($_SESSION['access_token'])){
 	header("Location: index.php");
 }
 
@@ -125,10 +125,20 @@ function tweets_and_follower()
 						</center>
 					</div>
 				</div>
+				<br>
+				<br>
+				<br>
+				<center><h3>Search for Users and then download their tweets</h3></center>
+				<div class="row">
+					<div class="col-lg-6"><center><input type="text" id="twitter_search" onkeypress="handle(event)"/></center></div>
+					<div><button id="search">Search</button></div>
+				</div>
+				<div class="search_result">
+					
+				</div>
 			</div>
 			<div class="col-lg-4 col-sm-12">
 				<div><h3>Follwers List</h3></div>
-				<input type="text" id="followers_search"/>
 				<?php 
 				$followers = $_SESSION['followers'];
 				foreach ($followers->users as $follower) { ?>
@@ -146,6 +156,8 @@ function tweets_and_follower()
 		</div>
 		
 
+
+
 	</body>
 
 
@@ -159,6 +171,26 @@ function tweets_and_follower()
 				}
 			})
 		});
+
+		$("#search").click(function () {
+			search_user();
+		})
+
+		function search_user(){
+			$.ajax({
+				url: "usersearch.php?q="+$("#twitter_search").val(),
+				dataType: "html",
+				success: function (html) {
+					$(".search_result").html(html);
+				}
+			})
+		}
+		function handle(e){
+	        if(e.keyCode === 13){
+	            e.preventDefault();
+	            search_user();
+	        }
+	    }
 
 		$("#logout").click(function () {
 			$.ajax({
@@ -174,6 +206,9 @@ function tweets_and_follower()
 			});
 			// window.location.href = "generatecsv.php";
 		});
+		function search_tweets(sname,name) {
+	    	window.location.href = "searcheduser.php?sname="+sname+"&name="+name;
+	    };
 
 		var slider = $('.bxslider').bxSlider({
 			mode: 'horizontal'
@@ -203,18 +238,8 @@ function tweets_and_follower()
 				}
 			})
 		});
-		var followers;
-		$.ajax({
-	      url: 'followers.php',
-	      dataType: 'json',     
-	      success: function(json) {
-	      	followers=jQuery.parseJSON(JSON.stringify(json));
-		    // console.log(followers);
-	      },
-	      error: function (e) {
-	      	console.log(e);
-	      }
-	    });
+
+	    
 
 	</script>
 	</html>

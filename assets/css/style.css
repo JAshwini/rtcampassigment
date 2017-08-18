@@ -19,7 +19,17 @@
     font-size: 12px;
 }
 
+.search_screen_name{
+	color: #b5b3b3;
+    font-size: 12px;
+}
 .follower_name {
+	color: skyblue;
+	margin-bottom: -2%;
+	cursor: pointer;
+}
+
+.search_name {
 	color: skyblue;
 	margin-bottom: -2%;
 	cursor: pointer;
