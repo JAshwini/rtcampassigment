@@ -18,7 +18,7 @@
 						<h2> Welcome to Tweets World!</h2>
 					</div>
 					<div class="col-sm-12 col-md-12 col-lg-12" style="">
-						<a href="https://rtcampassignment.herokuapp.com/home.php" >
+						<a href="http://127.0.0.1/rtwitter-master/ui/home.php" >
 							<button type="button" class="btn btn-primary">Sign In</button>
 						</a>
 					</div>
