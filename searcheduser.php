@@ -17,21 +17,21 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 
 $screen_name = $_GET['sname'];
 
-$tweets = array();
-$cnt = 0;
+
+$pgno=1;
+$tweets=array();
 $available=true;
 
-while ($available != false && $cnt!= 10) {
-    $tweet= $connection->get('statuses/user_timeline',["screen_name"=>$screen_name,"page"=>$cnt]);
+while ($available != false && $pgno!= 19) {
+	$tweet= $connection->get('statuses/user_timeline',["screen_name"=>$screen_name,"count"=>200,"page"=>$pgno]);
     if (empty($tweet)) {
         $available=false;   
-    }
-    else {
-        foreach ($tweet as $twt) {
-            array_push($tweets, $twt);
+    } else {
+        foreach ($tweet as $t) {
+            array_push($tweets, $t);
         }
     }
-    $cnt++;
+    $pgno++;
 }
 // print_r($tweets);die();
 $pdf = new FPDF();
